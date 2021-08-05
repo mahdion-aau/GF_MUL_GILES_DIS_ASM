@@ -1,5 +1,13 @@
 # GF_MUL_GILES_DIS_ASM
 
+The result of this test:\
+When we use power_model of ELMO, the effects of the second operand, HW and HD cause leakages in LDRB and NEGS instructions.
+ELMO simulated LDR instruction as: LDR rt, [rn, #imm]: LDR op1, op2. op2 is the data in the memmory address rn + imm.
+There is a possibility that in GILES op2 is considered as memory addres not the data in side of the address.
+
+So, as we run GILES twice for generating fix and rnd data, the memorry addresses are different, so this causes the ldr instruction be detected as a leaky one.\
+\
+\
 This file is related to the **Galois field multiplication based on Log_Exp: GF(2^8)**
 c = a * b, where a, b and c are one share.
 The function gfmul is used in all gadget for computing a[i] * b[i].\
